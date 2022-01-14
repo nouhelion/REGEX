@@ -12,7 +12,8 @@ void number(string chaine)
         switch (state)
         {
         case 0:
-            {if (chaine[i] == 'a')
+        {
+            if (chaine[i] == 'a')
             {
                 state = 1;
                 i++;
@@ -22,13 +23,16 @@ void number(string chaine)
                 cout << "It consists of an even number of a" << endl;
                 exit(0);
             }
-            else{
+            else
+            {
                 cout << "It's not < a > " << endl;
                 exit(1);
             }
-            break;}
+            break;
+        }
         case 1:
-            {if (chaine[i] == 'a')
+        {
+            if (chaine[i] == 'a')
             {
                 state = 0;
                 i++;
@@ -38,11 +42,13 @@ void number(string chaine)
                 cout << "It consists of an odd number of a" << endl;
                 exit(0);
             }
-            else{
+            else
+            {
                 cout << "It's not < a > " << endl;
                 exit(1);
             }
-            break;}
+            break;
+        }
         }
     }
 }
