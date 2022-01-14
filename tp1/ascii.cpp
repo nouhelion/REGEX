@@ -12,7 +12,7 @@ union {
 }p;
 void CTOA(){
     p.i=0;
-    cout << "Enter the phrase :" << endl;
+    cout << "Enter the character :" << endl;
     cin>>p.c;
     cout<<"ASCII code : "<<p.i<< endl;
 }
