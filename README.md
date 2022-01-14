@@ -21,3 +21,13 @@ A quantifier after a token (such as a character) or group specifies how often th
 {min,}	The preceding item is matched min or more times.
 {,max}	The preceding item is matched up to max times.
 {min,max}	The preceding item is matched at least min times, but not more than max times.
+
+
+macros          condition
+isalpha(c)        A-Z, a-z
+isupper(c)        A-Z
+islower(c)        a-z
+isdigit(c)        0-9
+isxdigit(c)       0-9, A-F, a-f
+isspace(c)        blanc
+isalnum(c)        0-9, A-Z, a-z
