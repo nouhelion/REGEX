@@ -12,8 +12,18 @@
 using namespace std;
 void parentheses(string chaine)
 {
-   int i,j;
-   
+   int i=0,j=0;
+   while(i<chaine.length())
+   {
+       if(chaine[i]=='(')
+             ++j;
+       else if(chaine[i]==')')
+             --j; 
+        i++;
+   }
+   if(!j) cout<<"Parentheses are well balanced"<<endl;
+   else if(j<0) cout<<"missing, "<<-j<<" opening parentheses "<<endl;
+   else  cout<<"missing, "<<j<<" closing parentheses "<<endl;
 }
  int main(int argc, char** argv){
      string chaine;
