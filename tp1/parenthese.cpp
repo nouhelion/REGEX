@@ -12,7 +12,8 @@
 using namespace std;
 void parentheses(string chaine)
 {
-
+   int i,j;
+   
 }
  int main(int argc, char** argv){
      string chaine;
