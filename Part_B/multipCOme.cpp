@@ -1,3 +1,8 @@
+//Write a program that implements the previous automata of
+//C and C++ comments and displays the content of the comment.
+//Examples: /* a comment */ and // a comment \n
+
+
 #include <iostream>
 using namespace std;
 int main()
