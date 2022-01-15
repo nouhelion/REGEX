@@ -60,10 +60,17 @@ void comment(string chaine)
         }
         case 3:
         {
-            cout << "Le corps du commentaire est: ";
+            if(i==chaine.length())
+            {
+                cout << "Le corps du commentaire est: ";
             for (int n = 0; n < j; n++)
                 cout << comment[n];
             // for(i=2; i<chaine.size(); i++) cout<< chaine[i]);
+            }
+            else 
+           { cout<<"erreur"<<endl;
+           exit(1);
+           }
         }
         }
     }
