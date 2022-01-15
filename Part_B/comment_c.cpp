@@ -1,17 +1,17 @@
-//Write a program that implements a deterministic finite state machine
-//which validates a C-style comment and displays the content of the comment.
-//Example: 
+// Write a program that implements a deterministic finite state machine
+// which validates a C-style comment and displays the content of the comment.
+// Example:
 /* a body of remark */
-//Examples: /***/ /*a**b*/ /**A*/
+// Examples: /***/ /*a**b*/ /**A*/
 
 #include <cstring>
 #include <ctype.h>
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-void email(string chaine)
+void comment(string chaine)
 {
-    string comment;
+    string com;
     int i = 0, j = 0, state = 0;
     while (1)
     {
@@ -31,9 +31,10 @@ void email(string chaine)
             }
             break;
         }
+
         case 1:
         {
-            if (chaine[i] == '/')
+            if (chaine[i] == '*')
             {
                 state = 2;
                 i++;
@@ -47,13 +48,19 @@ void email(string chaine)
         }
         case 2:
         {
-            if (chaine[i] == '\n' || i == chaine.size())
+            if (i == chaine.size())
+            {
+                cout << "!!! Erreur ";
+                exit(1);
+            }
+            else if (chaine[i] == '*')
             {
                 state = 3;
+                i++;
             }
             else
             {
-                comment[j] = chaine[i];
+                com[j] = chaine[i];
                 j++;
                 i++;
             }
@@ -61,10 +68,37 @@ void email(string chaine)
         }
         case 3:
         {
+            if (i == chaine.size())
+            {
+                cout << "!!! Erreur ";
+                exit(1);
+            }
+            else if (chaine[i] == '*')
+            {
+                com[j] = chaine[i];
+                j++;
+                i++;
+            }
+            else if (chaine[i] == '/')
+            {
+                state = 4;
+            }
+            else
+            {
+                state = 2;
+                com[j] = '*', j++;
+                com[j] = chaine[i];
+                j++;
+                i++;
+            }
+            break;
+        }
+        case 4:
+        {
             cout << "Le corps du commentaire est: ";
             for (int n = 0; n < j; n++)
-                cout << comment[n];
-            // for(i=2; i<chaine.size(); i++) cout<< chaine[i]);
+                cout << com[n];
+            exit(0);
         }
         }
     }
@@ -75,6 +109,6 @@ int main(int argc, char **argv)
     string chaine;
     cout << "Enter the phrase :" << endl;
     getline(cin, chaine);
-    email(chaine);
+   comment(chaine);
     return 0;
 }

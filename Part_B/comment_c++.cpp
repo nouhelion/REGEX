@@ -8,7 +8,7 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-void email(string chaine)
+void comment(string chaine)
 {
     string comment;
     int i = 0, j = 0, state = 0;
@@ -74,6 +74,6 @@ int main(int argc, char **argv)
     string chaine;
     cout << "Enter the phrase :" << endl;
     getline(cin, chaine);
-    email(chaine);
+    comment(chaine);
     return 0;
 }
