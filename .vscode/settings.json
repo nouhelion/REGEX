@@ -3,6 +3,7 @@
         "*.c++": "cpp",
         "*.py": "python",
         "iostream": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "ostream": "cpp"
     }
 }

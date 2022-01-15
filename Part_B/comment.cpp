@@ -47,15 +47,9 @@ void email(string chaine)
         }
         case 2:
         {
-            if (isalnum(chaine[i]))
-            {
-                state = 2;
-                i++;
-            }
-            else if (chaine[i] == '\n' || i == chaine.length())
+          if (chaine[i] == '\n' || i == chaine.length())
             {
                 state = 3;
-                i++;
             }
             else
             {
@@ -68,9 +62,9 @@ void email(string chaine)
         case 3:
         {
             cout << "Le corps du commentaire est: ";
-            for (int n = 0; n < j; n++)
-                cout << comment[n];
-            // for(i=2; i<chaine.size(); i++) cout<< chaine[i]);
+           
+            for(i=2; i<chaine.size(); i++) 
+                cout<< chaine[i];
             break;
         }
         }
