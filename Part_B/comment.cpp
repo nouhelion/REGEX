@@ -10,14 +10,15 @@
 using namespace std;
 void email(string chaine)
 {
-    int i = 0, state = 0;
+    string comment;
+    int i = 0, j = 0, state = 0;
     while (1)
     {
         switch (state)
         {
         case 0:
         {
-            if (chaine[i]=='/')
+            if (chaine[i] == '/')
             {
                 state = 1;
                 i++;
@@ -31,8 +32,8 @@ void email(string chaine)
         }
         case 1:
         {
-            
-            if (chaine[i]=='/')
+
+            if (chaine[i] == '/')
             {
                 state = 1;
                 i++;
@@ -51,30 +52,25 @@ void email(string chaine)
                 state = 2;
                 i++;
             }
-            else if (chaine[i]=='\n')
+            else if (chaine[i] == '\n' || i == chaine.length())
             {
                 state = 3;
                 i++;
             }
             else
             {
-                cout << "erreur" << endl;
-                exit(1);
+                comment[j] = chaine[i];
+                j++;
+                i++;
             }
             break;
         }
         case 3:
         {
-            if (i==chaine.length())
-            {
-               cout << "valide"<< endl;
-                exit(0);
-            }
-            else
-            {
-                cout << "erreur" << endl;
-                exit(1);
-            }
+            cout << "Le corps du commentaire est: ";
+            for (int n = 0; n < j; n++)
+                cout << comment[n];
+            // for(i=2; i<chaine.size(); i++) cout<< chaine[i]);
             break;
         }
         }
