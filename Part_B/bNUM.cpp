@@ -10,7 +10,7 @@
 using namespace std;
 void bNUM(string chaine)
 {
-    int i = 0, state = 0;
+    int i = 0,b=0, state = 0;
     while (1)
     {
         switch (state)
@@ -33,7 +33,7 @@ void bNUM(string chaine)
         {
             if (i==chaine.length())
             {
-                cout << "valide" << endl;
+                cout << "valide with "<<b<<" b" << endl;
                 exit(0);
             }
             else if (chaine[i] == 'a')
@@ -45,6 +45,7 @@ void bNUM(string chaine)
             {
                  state = 2;
                  i++;
+                 b++;
             }
             else
             {
@@ -64,6 +65,7 @@ void bNUM(string chaine)
             {
                  state = 2;
                  i++;
+                 b++;
             }
             else
             {
@@ -76,7 +78,7 @@ void bNUM(string chaine)
         {
              if (i==chaine.length())
             {
-                cout << "valide" << endl;
+               cout << "valide with "<<b<<" b" << endl;
                 exit(0);
             }
             else
