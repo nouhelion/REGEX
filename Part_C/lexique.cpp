@@ -7,6 +7,7 @@
 using namespace std;
 int delim(string chaine, int i);
 void analyse(string chaine);
+//verifying if the delim exists in the string chaine
 int delim(string chaine, int i){
  int state=0;
  while(1){
@@ -36,6 +37,7 @@ int delim(string chaine, int i){
      }
  }
 }
+//analysing the chaine and only show the chaine without any \t or spaces 
 void analyse(string chaine){
     int unsigned n;
     int k = 0;
