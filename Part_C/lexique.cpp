@@ -62,14 +62,19 @@ void analyse(string chaine)
         copy[k] = chaine[i];
         k++;
     }
+    copy[k] = '\0';
     for (i = 0; i < chaine.length(); i++)
     {
         if (isalpha(chaine[i]))
         {
             i = identificateur(chaine, i);
         }
+        if (isdigit(chaine[i]) || (chaine[i] == '+' || chaine[i] == '-'))
+        {
+            i = reel(chaine, i);
+        }
     }
-    copy[k] = '\0'; //pour delimiter la chaine, c'est important
+
     cout << "\n\t la chaine traitee est : " << copy << "\n\n";
 }
 int identificateur(string chaine, int i)
@@ -155,16 +160,94 @@ int reel(string chaine, int i)
                 state = 2;
                 i++;
             }
-            else if (chaine[i]=='.')
+            else if (chaine[i] == '.')
             {
-                state =3;
+                state = 3;
                 i++;
             }
-            else if (chaine[i]=='e'||chaine[i]=='E')
+            else if (chaine[i] == 'e' || chaine[i] == 'E')
             {
-                state =5;
+                state = 5;
                 i++;
             }
+            else
+            {
+                state = 8;
+            }
+            break;
+        }
+        case 3:
+        {
+            if (isdigit(chaine[i]))
+            {
+                state = 4;
+                i++;
+            }
+            break;
+        }
+        case 4:
+        {
+            if (isdigit(chaine[i]))
+            {
+                state = 4;
+                i++;
+            }
+            else if (chaine[i] == 'e' || chaine[i] == 'E')
+            {
+                state = 5;
+                i++;
+            }
+            else
+            {
+                state = 8;
+            }
+            break;
+        }
+        case 5:
+        {
+            if (isdigit(chaine[i]))
+            {
+                state = 7;
+                i++;
+            }
+            else if (chaine[i] == '-' || chaine[i] == '+')
+            {
+                state = 6;
+                i++;
+            }
+            break;
+        }
+        case 6:
+        {
+            if (isdigit(chaine[i]))
+            {
+                state = 7;
+                i++;
+            }
+            break;
+        }
+        case 7:
+        {
+            if (isdigit(chaine[i]))
+            {
+                state = 7;
+                i++;
+            }
+            else
+            {
+                state = 8;
+            }
+            break;
+        }
+        case 8:
+        {
+            cout << "\t==== NOMBRE : " << endl;
+            for (j = k; j < i; j++)
+            {
+                cout << chaine[j];
+            }
+            cout << endl;
+            return i;
             break;
         }
         }
