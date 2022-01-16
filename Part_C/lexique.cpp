@@ -55,7 +55,33 @@ void analyse(string chaine){
     cout<<copy<<endl;
 }
 int identificateur(string chaine, int i){
-    
+    int state=0;
+ while(1){
+     switch(state){
+         case 0: {
+             if(isalpha(chaine[i]))
+             {
+                 state=1;
+                 i++;
+             }
+             break;
+         }
+         case 1: {
+             if(chaine[i]==' '|| chaine[i] == '\t')
+             {
+                 i++;
+             }
+             else 
+             {
+                state=2;
+             }
+             break;
+         }
+          case 2 : {
+            return i;
+         }
+     }
+ }
 }
 int main(int argc, char **argv)
 {
