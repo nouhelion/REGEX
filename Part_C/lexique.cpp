@@ -67,12 +67,16 @@ void analyse(string chaine)
     for (i = 0; i < chaine.length(); i++)
     {
         if (isalpha(chaine[i]))
-        {
+        { 
             i = identificateur(chaine, i);
         }
         if (isdigit(chaine[i]) || (chaine[i] == '+' || chaine[i] == '-'))
         {
             i = reel(chaine, i);
+        }
+        if (chaine[i] == '>' || chaine[i] == '<' || chaine[i] == '=')
+        {
+            i = operel(chaine, i);
         }
     }
 
@@ -253,8 +257,106 @@ int reel(string chaine, int i)
         }
     }
 }
-int operel(string chaine, int i){
+int operel(string chaine, int i)
+{
+    int state = 0;
+    while (1)
+    {
+        switch (state)
+        {
+        case 0:
+        {
+            if (chaine[i] == '>')
+            {
+                state = 1;
+                i++;
+            }
+            else if (chaine[i] == '<')
+            {
+                state = 6;
+                i++;
+            }
+            else if (chaine[i] == '=')
+            {
+                state = 4;
+                i++;
+            }
+            break;
+        }
+        case 1:
+        {
+            if (chaine[i] == '=')
+            {
+                state = 2;
+            }
+            else
+            {
+                state = 3;
+            }
+            break;
+        }
+        case 2:
+        {
+            cout << "\t*** OPEREL: PGE\n";
+            return i;
+            break;
+        }
+        case 3:
+        {
+            cout << "\t*** OPEREL: PGQ\n";
+            return --i;
+        }
+        case 4:
+        {
+            if (chaine[i] == '=')
+            {
+                state = 5;
+            }
+            break;
+        }
+        case 5:
+        {
+            cout << "\t*** OPEREL: EGA\n";
+            return i;
+            break;
+        }
+        case 6:
+        {
+            if (chaine[i] == '=')
+            {
+                state = 8;
+            }
+            else if (chaine[i] == '>')
+            {
+                state = 7;
+            }
+            else
+            {
+                state = 9;
+            }
+        }
+        case 7:
+        {
 
+            cout << "\t*** OPEREL: DIF\n";
+            return i;
+            break;
+        }
+        case 8:
+        {
+
+            cout << "\t*** OPEREL: PPE\n";
+            return i;
+            break;
+        }
+        case 9:
+        {
+
+            cout << "\t*** OPEREL: PPQ\n";
+            return --i;
+        }
+        }
+    }
 }
 int main(int argc, char **argv)
 {
