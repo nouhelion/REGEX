@@ -9,79 +9,109 @@ int delim(string chaine, int i);
 void analyse(string chaine);
 int identificateur(string chaine, int i);
 //verifying if the delim exists in the string chaine
-int delim(string chaine, int i){
- int state=0;
- while(1){
-     switch(state){
-         case 0: {
-             if(chaine[i]==' '|| chaine[i] == '\t')
-             {
-                 state=1;
-                 i++;
-             }
-             break;
-         }
-         case 1: {
-             if(chaine[i]==' '|| chaine[i] == '\t')
-             {
-                 i++;
-             }
-             else 
-             {
-                state=2;
-             }
-             break;
-         }
-          case 2 : {
+int delim(string chaine, int i)
+{
+    int state = 0;
+    while (1)
+    {
+        switch (state)
+        {
+        case 0:
+        {
+            if (chaine[i] == ' ' || chaine[i] == '\t')
+            {
+                state = 1;
+                i++;
+            }
+            break;
+        }
+        case 1:
+        {
+            if (chaine[i] == ' ' || chaine[i] == '\t')
+            {
+                i++;
+            }
+            else
+            {
+                state = 2;
+            }
+            break;
+        }
+        case 2:
+        {
             return i;
-         }
-     }
- }
+        }
+        }
+    }
 }
-//analysing the chaine and only show the chaine without any \t or spaces 
-void analyse(string chaine){
-    int unsigned n;
+//analysing the chaine and only show the chaine without any \t or spaces
+void analyse(string chaine)
+{
+    int unsigned i;
     int k = 0;
     char copy[100];
-    for(n=0;n<chaine.length();n++){
-       if(chaine[n]==' '|| chaine[n] == '\t')
-             {
-                n=delim(chaine,n);
-             }
-             copy[k]=chaine[n];
-             k++;
+    cout << "\n\n les mots et leurs classes de la chaine sont : "
+         << "\n\n";
+    for (i = 0; i < chaine.length(); i++)
+    {
+        if (chaine[i] == ' ' || chaine[i] == '\t')
+        {
+            i = delim(chaine, i);
+        }
+        copy[k] = chaine[i];
+        k++;
     }
-    copy[n]='\0';
-    cout<<copy<<endl;
+    for (i = 0; i < chaine.length(); i++)
+    {
+        if (isalpha(chaine[i]))
+        {
+            i = identificateur(chaine, i);
+        }
+    }
+    copy[k] = '\0'; //pour delimiter la chaine, c'est important
+    cout << "\n\t la chaine traitee est : " << copy << "\n\n";
 }
-int identificateur(string chaine, int i){
-    int state=0;
- while(1){
-     switch(state){
-         case 0: {
-             if(isalpha(chaine[i]))
-             {
-                 state=1;
-                 i++;
-             }
-             break;
-         }
-         case 1: {
-             if(chaine[i]==' '|| chaine[i] == '\t')
-             {
-                 i++;
-             }
-             else 
-             {
-                state=2;
-             }
-             break;
-         }
-          case 2 : {
+int identificateur(string chaine, int i)
+{
+    int j, k = i;
+    int state = 0;
+    while (1)
+    {
+        switch (state)
+        {
+        case 0:
+        {
+            if (isalpha(chaine[i]))
+            {
+                state = 1;
+                i++;
+            }
+            break;
+        }
+        case 1:
+        {
+            if (isalnum(chaine[i]))
+            {
+                i++;
+            }
+            else
+            {
+                state = 2;
+            }
+            break;
+        }
+        case 2:
+        {
+            cout << "\t****> identificateur : ";
+            for (j = k; j < i; j++)
+            {
+                cout << chaine[j];
+            }
+            cout << endl;
             return i;
-         }
-     }
- }
+        }
+        }
+    }
 }
 int main(int argc, char **argv)
 {
