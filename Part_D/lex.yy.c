@@ -726,7 +726,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 5 "space.l"
-{/* supprime les espaces et tabulations */ }
+{/*delete all the spaces and tabulations*/}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -1745,11 +1745,14 @@ void yyfree (void * ptr )
 
 #line 7 "space.l"
 
-int main(){
-printf("donnez une chaine: ");
-yylex();
-return 0;
+int main()
+{
+    printf("enter a string");
+    yylex();
+    return 0;
 }
-int yywrap(){ // pour délimiter la fin de la chaine
-return 1;
+int yywrap(){
+    return 1;
 }
+
+
