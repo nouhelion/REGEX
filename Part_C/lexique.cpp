@@ -155,9 +155,14 @@ int reel(string chaine, int i)
                 state = 2;
                 i++;
             }
-            else if (isdigit(chaine[i]))
+            else if (chaine[i]=='.')
             {
-                state = 2;
+                state =3;
+                i++;
+            }
+            else if (chaine[i]=='e'||chaine[i]=='E')
+            {
+                state =5;
                 i++;
             }
             break;
