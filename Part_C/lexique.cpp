@@ -7,6 +7,7 @@
 using namespace std;
 int delim(string chaine, int i);
 void analyse(string chaine);
+int identificateur(string chaine, int i);
 //verifying if the delim exists in the string chaine
 int delim(string chaine, int i){
  int state=0;
@@ -52,6 +53,9 @@ void analyse(string chaine){
     }
     copy[n]='\0';
     cout<<copy<<endl;
+}
+int identificateur(string chaine, int i){
+    
 }
 int main(int argc, char **argv)
 {
