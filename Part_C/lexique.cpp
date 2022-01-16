@@ -8,6 +8,7 @@ using namespace std;
 int delim(string chaine, int i);
 void analyse(string chaine);
 int identificateur(string chaine, int i);
+int reel(string chaine, int i);
 //verifying if the delim exists in the string chaine
 int delim(string chaine, int i)
 {
@@ -109,6 +110,57 @@ int identificateur(string chaine, int i)
             }
             cout << endl;
             return i;
+        }
+        }
+    }
+}
+int reel(string chaine, int i)
+{
+    int j, k = i;
+    int state = 0;
+    while (1)
+    {
+        switch (state)
+        {
+        case 0:
+        {
+            if (isdigit(chaine[i]) || (chaine[i] == '-' || chaine[i] == '+'))
+            {
+                if (isdigit(chaine[i]))
+                {
+                    state = 2;
+                    i++;
+                }
+                else
+                {
+                    state = 1;
+                    i++;
+                }
+            }
+            break;
+        }
+        case 1:
+        {
+            if (isdigit(chaine[i]))
+            {
+                state = 2;
+                i++;
+            }
+            break;
+        }
+        case 2:
+        {
+            if (isdigit(chaine[i]))
+            {
+                state = 2;
+                i++;
+            }
+            else if (isdigit(chaine[i]))
+            {
+                state = 2;
+                i++;
+            }
+            break;
         }
         }
     }
