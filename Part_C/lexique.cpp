@@ -10,6 +10,7 @@ void analyse(string chaine);
 int identificateur(string chaine, int i);
 int reel(string chaine, int i);
 int operel(string chaine, int i);
+int parentheses(string chaine, int i);
 //verifying if the delim exists in the string chaine
 int delim(string chaine, int i)
 {
@@ -67,7 +68,7 @@ void analyse(string chaine)
     for (i = 0; i < chaine.length(); i++)
     {
         if (isalpha(chaine[i]))
-        { 
+        {
             i = identificateur(chaine, i);
         }
         if (isdigit(chaine[i]) || (chaine[i] == '+' || chaine[i] == '-'))
@@ -354,6 +355,38 @@ int operel(string chaine, int i)
 
             cout << "\t*** OPEREL: PPQ\n";
             return --i;
+        }
+        }
+    }
+}
+int parentheses(string chaine, int i)
+{
+    int state = 0;
+    while (1)
+    {
+        switch (state)
+        {
+        case 0:
+        {
+            if (chaine[i] == '(')
+            {
+                state = 1;
+            }
+            else if (chaine[i] == ')')
+            {
+                state = 2;
+            }
+            break;
+        }
+        case 1:
+        {
+            cout << "\t ---> PO" << endl;
+            return i;
+        }
+        case 2:
+        {
+            cout << "\t ---> PF" << endl;
+            return i;
         }
         }
     }
