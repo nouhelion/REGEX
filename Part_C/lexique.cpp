@@ -9,6 +9,7 @@ int delim(string chaine, int i);
 void analyse(string chaine);
 int identificateur(string chaine, int i);
 int reel(string chaine, int i);
+int operel(string chaine, int i);
 //verifying if the delim exists in the string chaine
 int delim(string chaine, int i)
 {
@@ -121,7 +122,6 @@ int identificateur(string chaine, int i)
 }
 int reel(string chaine, int i)
 {
-    int j, k = i;
     int state = 0;
     while (1)
     {
@@ -252,6 +252,9 @@ int reel(string chaine, int i)
         }
         }
     }
+}
+int operel(string chaine, int i){
+
 }
 int main(int argc, char **argv)
 {
