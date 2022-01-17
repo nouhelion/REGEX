@@ -3,6 +3,7 @@
 %}
 %% 
 \/\/(.)*\n {printf("comment correct in c++\n");}
+\/\*(.|\n)*\*\/ {printf("comment correct in c++\n");}
 .+ {printf("comment not correct in c++\n");}
 %%
 int main() {
