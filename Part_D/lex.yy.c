@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 5
-#define YY_END_OF_BUFFER 6
+#define YY_NUM_RULES 3
+#define YY_END_OF_BUFFER 4
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -360,19 +360,19 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[14] =
+static const flex_int16_t yy_accept[12] =
     {   0,
-        0,    0,    6,    3,    2,    5,    2,    3,    2,    4,
-        2,    1,    0
+        0,    0,    4,    2,    3,    2,    2,    2,    2,    1,
+        0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -400,31 +400,31 @@ static const YY_CHAR yy_ec[256] =
 
 static const YY_CHAR yy_meta[4] =
     {   0,
-        1,    2,    2
+        1,    2,    1
     } ;
 
-static const flex_int16_t yy_base[15] =
+static const flex_int16_t yy_base[14] =
     {   0,
-        0,    8,    9,    0,    2,   11,    4,    0,    0,   11,
-        0,   11,   11,    7
+        0,    0,   10,    0,   11,    6,    0,    6,    5,   11,
+       11,    5,    3
     } ;
 
-static const flex_int16_t yy_def[15] =
+static const flex_int16_t yy_def[14] =
     {   0,
-       13,    1,   13,   14,   13,   13,   13,   14,    5,   13,
-        7,   13,    0,   13
+       11,    1,   11,   12,   11,   12,   12,   13,   13,   11,
+        0,   11,   11
     } ;
 
 static const flex_int16_t yy_nxt[15] =
     {   0,
-        4,    5,    6,    9,   10,   11,   12,    8,   13,    7,
-        3,   13,   13,   13
+        4,    5,    6,    9,    9,    7,   10,   10,    8,   11,
+        3,   11,   11,   11
     } ;
 
 static const flex_int16_t yy_chk[15] =
     {   0,
-        1,    1,    1,    5,    5,    7,    7,   14,    3,    2,
-       13,   13,   13,   13
+        1,    1,    1,   13,   13,   12,    9,    8,    6,    3,
+       11,   11,   11,   11
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -441,8 +441,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "replace.l"
-#line 2 "replace.l"
+#line 1 "comment_c.l"
+#line 2 "comment_c.l"
     #include <stdio.h>
 #line 447 "lex.yy.c"
 #line 448 "lex.yy.c"
@@ -625,9 +625,6 @@ extern int yylex (void);
 #endif
 
 #define YY_RULE_SETUP \
-	if ( yyleng > 0 ) \
-		YY_CURRENT_BUFFER_LVALUE->yy_at_bol = \
-				(yytext[yyleng - 1] == '\n'); \
 	YY_USER_ACTION
 
 /** The main scanner function which does all the work.
@@ -665,9 +662,9 @@ YY_DECL
 		}
 
 	{
-#line 4 "replace.l"
+#line 4 "comment_c.l"
 
-#line 670 "lex.yy.c"
+#line 667 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -682,7 +679,6 @@ YY_DECL
 		yy_bp = yy_cp;
 
 		yy_current_state = (yy_start);
-		yy_current_state += YY_AT_BOL();
 yy_match:
 		do
 			{
@@ -695,7 +691,7 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 14 )
+				if ( yy_current_state >= 12 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -728,31 +724,20 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 5 "replace.l"
-{ }
+#line 5 "comment_c.l"
+{printf("comment correct in c++\n");}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 6 "replace.l"
-{printf(" ");}
+#line 6 "comment_c.l"
+{printf("comment not correct in c++\n");}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 7 "replace.l"
-{ }
-	YY_BREAK
-case 4:
-/* rule 4 can match eol */
-YY_RULE_SETUP
-#line 8 "replace.l"
-{ }
-	YY_BREAK
-case 5:
-YY_RULE_SETUP
-#line 9 "replace.l"
+#line 7 "comment_c.l"
 ECHO;
 	YY_BREAK
-#line 755 "lex.yy.c"
+#line 740 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1037,7 +1022,6 @@ static int yy_get_next_buffer (void)
 	char *yy_cp;
     
 	yy_current_state = (yy_start);
-	yy_current_state += YY_AT_BOL();
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
@@ -1050,7 +1034,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 14 )
+			if ( yy_current_state >= 12 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1078,11 +1062,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 14 )
+		if ( yy_current_state >= 12 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 13);
+	yy_is_jam = (yy_current_state == 11);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1197,8 +1181,6 @@ static int yy_get_next_buffer (void)
 	c = *(unsigned char *) (yy_c_buf_p);	/* cast for 8-bit char's */
 	*(yy_c_buf_p) = '\0';	/* preserve yytext */
 	(yy_hold_char) = *++(yy_c_buf_p);
-
-	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = (c == '\n');
 
 	return c;
 }
@@ -1760,19 +1742,13 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 9 "replace.l"
+#line 7 "comment_c.l"
 
-int main(){
-    FILE *file;
-	char name[100];
-	printf("name of the file : ");
-	gets(name);
-	file = fopen(name,"r+");
-	yyin=file;
-	yylex();
-	fclose(file);
-	return 0;
- }
- int yywrap(){
-     return 1;
- }
+int main() {
+printf("enter a string");
+yylex();
+return 0;
+}
+int yywrap(){
+    return 1;
+}
