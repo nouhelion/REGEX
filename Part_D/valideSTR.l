@@ -3,6 +3,8 @@
 %}
 %%
 \+|\-|\*|\/ {printf("%s is a valid string",yytext);}
+FF+ {printf("%s is a valid string",yytext);}
+(ab)+ {printf("%s is a valid string",yytext);}
 . {printf("%s is not a valid string");}
 %%
 int main(){
