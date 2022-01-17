@@ -1,5 +1,5 @@
 %{
-  #include <stdio.h>  
+#include <stdio.h>    
 %}
 delim [ \t]
 bl    {delim}+
@@ -26,7 +26,7 @@ alors {printf("\n Mot cle: THEN\n");}
 . {printf("\n%s: Caractère non reconnu\n",yytext);}
 %%
 int main(){
-printf("enter a string");
+printf("enter a string : ");
 yylex();
 return 0;
 }
