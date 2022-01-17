@@ -4,13 +4,18 @@
 %}
 %%
 [^\t \n]+ {counter++;}
-\n   {printf("%d words exist",counter);
-exit(0);}
 %%
  int main(){
-     printf("enter a string");
-     yylex();
-     return 0;
+    FILE *file;
+	char name[100];
+	printf("name of the file : ");
+	gets(name);
+	file = fopen(name,"r+");
+	yyin=file;
+	yylex();
+	fclose(file);
+	printf("\nnumber of words : %d\n",counter);
+	return 0;
  }
  int yywrap(){
      return 1;
