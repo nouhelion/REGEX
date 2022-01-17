@@ -5,7 +5,7 @@ delim [ \t]
 bl    {delim}+
 lettre [a-zA-Z]
 chiffre [0-9]
-id {lettre}({lettre}|{chiffre})*
+id {lettre} ({lettre}|{chiffre})*
 nb (\+|\-)?{chiffre}+(\.{chiffre}+)?((e|E)(\+|\-)?{chiffre}+)?
 %%
 {bl} {/* supprimer de la sortie */}
