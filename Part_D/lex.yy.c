@@ -733,12 +733,12 @@ case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 6 "comment_c.l"
-{printf("comment correct in c++\n");}
+{printf("comment correct in c\n");}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 7 "comment_c.l"
-{printf("comment not correct in c++\n");}
+{printf("comment not correct \n");}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
@@ -1753,9 +1753,15 @@ void yyfree (void * ptr )
 #line 8 "comment_c.l"
 
 int main() {
-printf("enter a string \n");
-yylex();
-return 0;
+FILE *file;
+	char name[100];
+	printf("name of the file : ");
+	gets(name);
+	file = fopen(name,"r+");
+	yyin=file;
+	yylex();
+	fclose(file);
+	return 0;
 }
 int yywrap(){
     return 1;
