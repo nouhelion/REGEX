@@ -48,7 +48,6 @@ while(1){
         case 3 :{
             if (chaine[i]=='b'){
                   etat =1;
-                  n++;
                   i++;
             }
             else if (chaine[i]=='a'){
